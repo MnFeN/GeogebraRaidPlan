@@ -6,7 +6,7 @@ def from_coords(
         tgt_x: float, tgt_y: float, 
         half_width: float
     ) -> str:
-
+    
     src_x, src_y = my_round(src_x, 3), my_round(src_y, 3)
     tgt_x, tgt_y = my_round(tgt_x, 3), my_round(tgt_y, 3)
     half_width = my_round(half_width, 3)
@@ -22,10 +22,10 @@ def from_coords(
 
     if (dx == 0):
         result = (f"|x - {x_avr}| <= {half_width} ∧ "
-                  f"|y - {y_avr}| <= {abs(dy):.3f} / 2")
+                  f"{dy} * (y - {src_y}) >= 0")
     elif (dy == 0):
         result = (f"|y - {y_avr}| <= {half_width} ∧ "
-                  f"|x - {x_avr}| <= {abs(dx):.3f} / 2")
+                  f"{dx} * (x - {src_x}) >= 0")
     else:
         gcd_dxy = 1
         if (dx_4 := dx * 4) == int(dx_4) and (dy_4 := dy * 4) == int(dy_4):
@@ -38,7 +38,7 @@ def from_coords(
         norm_dy = my_round(norm_dy, 3)
 
         result = (f"|{norm_dy}(x - {x_avr}) - {norm_dx}(y - {y_avr})| <= {half_width} * √ {norm_dsquare} ∧ "
-                  f"|{norm_dx}(x - {x_avr}) + {norm_dy}(y - {y_avr})| <= {norm_dsquare} * {gcd_dxy} / 2")
+                  f"{norm_dx}(x - {src_x}) + {norm_dy}(y - {src_y}) >= 0")
 
     return formatize_math_expr(result)
 
@@ -54,5 +54,5 @@ def from_names(
     dy = f"(y({tgt_name}) - y({src_name}))"
     d_square = f"((x({tgt_name}) - x({src_name})) ^ 2 + (y({tgt_name}) - y({src_name})) ^ 2)"
     result = (f"|{dy}(x - {x_avr}) - {dx}(y - {y_avr})| <= {half_width} * √ {d_square} ∧ "
-              f"|{dx}(x - {x_avr}) + {dy}(y - {y_avr})| <= {d_square} / 2")
+              f"{dx}(x - x({src_name})) + {dy}(y - y({tgt_name})) >= 0")
     return formatize_math_expr(result)
