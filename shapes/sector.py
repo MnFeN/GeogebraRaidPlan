@@ -4,8 +4,8 @@ def from_point_coords(x0: float, y0: float, x1: float, y1: float, degree: float,
     dx = x1 - x0
     dy = y1 - y0
 
-    sinθ = sin(degree * pi / 180)
-    cosθ = cos(degree * pi / 180)
+    sinθ = sin(degree * pi / 360)
+    cosθ = cos(degree * pi / 360)
 
     vec_cw_x = round(cosθ * dx + sinθ * dy, 3)
     vec_cw_y = round(-sinθ * dx + cosθ * dy, 3)
