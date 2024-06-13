@@ -1,6 +1,6 @@
 # GeogebraRaidPlan
 
-辅助 Geogebra 用于 FFXIV 副本机制精准绘图。
+辅助 Geogebra 用于 FFXIV 等游戏中的副本机制精准绘图。
 
 自定义 FFXIV 副本机制中常见的图形，如矩形、扇形、十字等。
 
