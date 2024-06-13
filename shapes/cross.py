@@ -39,7 +39,7 @@ def from_coords(
 def from_names(
         src_name: str, 
         tgt_name: str, 
-        half_width: any
+        half_width: float | str
     ) -> str:
  
     dx = f"(x({tgt_name}) - x({src_name}))"

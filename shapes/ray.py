@@ -45,7 +45,7 @@ def from_coords(
 def from_names(
         src_name: str, 
         tgt_name: str, 
-        half_width: any
+        half_width: float | str
     ) -> str:
 
     x_avr = f"(x({src_name}) + x({tgt_name})) / 2" 
