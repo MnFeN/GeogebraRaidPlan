@@ -31,7 +31,7 @@ def from_coords(
         norm_dx = my_round(norm_dx, 3)
         norm_dy = my_round(norm_dy, 3)
 
-        result = (f"|{norm_dy}(x - {tgt_x}) - {norm_dx}(y - {tgt_y})| <= {half_width} * √ {norm_dsquare} ∧ "
+        result = (f"|{norm_dy}(x - {tgt_x}) - {norm_dx}(y - {tgt_y})| <= {half_width} * √ {norm_dsquare} ∨ "
                   f"|{norm_dx}(x - {tgt_x}) + {norm_dy}(y - {tgt_y})| <= {half_width} * √ {norm_dsquare}")
 
     return formatize_math_expr(result)
@@ -45,6 +45,6 @@ def from_names(
     dx = f"(x({tgt_name}) - x({src_name}))"
     dy = f"(y({tgt_name}) - y({src_name}))"
     d_square = f"((x({tgt_name}) - x({src_name})) ^ 2 + (y({tgt_name}) - y({src_name})) ^ 2)"
-    result = (f"|{dy}(x - x({tgt_name})) - {dx}(y - y({tgt_name}))| <= {half_width} * √ {d_square} ∧ "
+    result = (f"|{dy}(x - x({tgt_name})) - {dx}(y - y({tgt_name}))| <= {half_width} * √ {d_square} ∨ "
               f"|{dx}(x - x({tgt_name})) + {dy}(y - y({tgt_name}))| <= {half_width} * √ {d_square}")
     return formatize_math_expr(result)
