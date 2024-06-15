@@ -11,15 +11,14 @@ def from_coords(
     src_x = my_round(src_x, 3)
     src_y = my_round(src_y, 3)
 
-    outer = f"(x - {src_x}) ^ 2 + (y - {src_y}) ^ 2 <= {max_radius} ^ 2"
-    inner = f"(x - {src_x}) ^ 2 + (y - {src_y}) ^ 2 >= {min_radius} ^ 2"
+    d_square = f"(x - {src_x}) ^ 2 + (y - {src_y}) ^ 2"
 
     if (max_radius is not None and min_radius is not None):
-        return f"{inner} ∧ {outer}"
+        return f"{min_radius} ^ 2 <= {d_square} <= {max_radius} ^ 2"
     elif (max_radius is not None):
-        return outer
+        return f"{d_square} <= {max_radius} ^ 2"
     elif (min_radius is not None):
-        return inner
+        return f"{d_square} >= {min_radius} ^ 2"
     else:
         raise ValueError("Either max_radius or min_radius should be given.")
 
@@ -29,14 +28,13 @@ def from_names(
         min_radius: Optional[float | str] = None
     ) -> str:
     
-    outer = f"(x - x({src_name})) ^ 2 + (y - y({src_name})) ^ 2 <= {max_radius} ^ 2"
-    inner = f"(x - x({src_name})) ^ 2 + (y - y({src_name})) ^ 2 >= {min_radius} ^ 2"
+    d_square = f"(x - x({src_name})) ^ 2 + (y - y({src_name})) ^ 2"
 
     if (max_radius is not None and min_radius is not None):
-        return f"{inner} ∧ {outer}"
+        return f"{min_radius} ^ 2 <= {d_square} <= {max_radius} ^ 2"
     elif (max_radius is not None):
-        return outer
+        return f"{d_square} <= {max_radius} ^ 2"
     elif (min_radius is not None):
-        return inner
+        return f"{d_square} >= {min_radius} ^ 2"
     else:
         raise ValueError("Either max_radius or min_radius should be given.")
