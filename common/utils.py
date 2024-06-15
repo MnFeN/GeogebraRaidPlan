@@ -10,5 +10,5 @@ def my_round(x: float | int, n: int) -> float | int:
 
 def formatize_math_expr(result: str) -> str:
     result = result.replace("- -", "+ ").replace("+ -", "- ").replace(" 1 *", " *")
-    result = re.sub(r"(?<=[\(|-+]) *1 *(?=\()", " ", result)
+    result = re.sub(r"(?<=[\(|+-]) *1 *(?=\()", " ", result)
     return result
