@@ -18,7 +18,7 @@ def from_coords(
         raise ValueError("The 2 given coordinations are the same.")
 
     if (dx == 0 or dy == 0):
-        result = (f"|x - {tgt_x}| <= {half_width} ∧ "
+        result = (f"|x - {tgt_x}| <= {half_width} ∨ "
                   f"|y - {tgt_y}| <= {half_width}")
     else:
         gcd_dxy = 1
